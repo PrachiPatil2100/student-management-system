@@ -43,6 +43,33 @@ def search_student():
             print(f" \n🔍Found! Name : {student['name']} , Age : {student['age']}")
             return
     print("\n❌Student not Found!")
+
+def update_student():
+    roll_to_update= int(input("Enter Roll Number to update :"))
+    for student in students:
+        if student["roll_number"]==roll_to_update:
+            new_name =input("Enter New Name :")
+            new_age =int(input("Enter New Age :"))
+            student["name"] = new_name
+            student["age"] = new_age
+            print("✅ Student updated!")
+            return
+    choice = print("Do you want to update Roll Number? (y/n): ")
+   
+    if choice=="y":
+        new_roll =int(input("Enter New Roll number"))
+    
+    for check_student in students:
+        if check_student["roll_number"]==new_roll:
+            print("Error: This roll number is already taken")
+            return
+        student["roll_number"]=new_roll
+
+        print("✅ Student updated successfully!")
+        return
+
+    print("Error: Student with Roll Number",roll_to_update, "not found.")
+
     
 def delete_student():
     delete_roll = int(input("Enter Roll Number to delete :"))
@@ -61,11 +88,12 @@ while True:
     print("1. Add a New Student")
     print("2. View All Students")
     print("3. Search for a Student")
-    print("4. Delete a Student")
-    print("5. Exit")
+    print("4. Update a Student")
+    print("5. Delete a Student")
+    print("6. Exit")
     print("====================================")
 
-    user_choice = int(input("Enter your choice (1-5): "))
+    user_choice = int(input("Enter your choice (1-6): "))
 
     if user_choice == 1:
         add_student()
@@ -74,10 +102,13 @@ while True:
         view_students()
     elif user_choice == 3:
         search_student()
-    elif user_choice == 4:
-        delete_student()
+    elif user_choice==4:
+        update_student()
         save_data()
     elif user_choice == 5:
+        delete_student()
+        save_data()
+    elif user_choice == 6:
         print("\nExiting... Have a great day!")
         break
     else:

@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "name": "dsaaa",
+        "age": 32,
+        "roll_number": 1
+    },
+    {
+        "name": "deef",
+        "age": 23,
+        "roll_number": 2
+    }
+]
